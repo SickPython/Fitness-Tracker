@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Fittness Tracker</string>
+    <string name="MenuWorkoutButtonText">Track Workout</string>
+    <string name="MenuWaterCalButtonText">Track Water/Calories</string>
+    <string name="MenuProgressButtonText">My Progress</string>
+    <string name="MenuTitleText">My Fitness Tracker</string>
+
+    <string name="WorkoutTitleText">Track Workout</string>
+    <string name="WaterCalTitleText">Track Water and Calories</string>
+    <string name="ProgressTitleText">My Progress</string>
+</resources>
