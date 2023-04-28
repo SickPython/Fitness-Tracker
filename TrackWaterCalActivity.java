@@ -1,12 +1,12 @@
-package com.example.fittnesstracker;
+package com.example.fitnesstracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.TestLooperManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class TrackWaterCalActivity extends AppCompatActivity{
 
@@ -17,7 +17,11 @@ public class TrackWaterCalActivity extends AppCompatActivity{
 
         Intent mainintent = getIntent();
 
+        TextView waterCalTitleText = findViewById(R.id.WaterCalTitleText);
+        TextView EnterCaloriesText = findViewById(R.id.EnterCaloriesText);
+        EditText EditCaloriesText = findViewById(R.id.CaloriesEditText);
+        TextView EnterWaterText = findViewById(R.id.EnterWaterOzText);
+        EditText EditWaterText = findViewById(R.id.WaterOzEditText);
 
-        TextView WaterCalTitleText = findViewById(R.id.WaterCalTitleText);
     }
 }
