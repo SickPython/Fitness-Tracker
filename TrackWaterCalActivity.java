@@ -1,81 +1,27 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black">
+package com.example.fitnesstracker;
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#000000"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:context=".MainActivity">
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
 
-        <TextView
-            android:id="@+id/WaterCalTitleText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/WaterCalTitleText"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:translationY="50dp" />
+import com.google.android.material.textfield.TextInputEditText;
 
-        <TextView
-            android:id="@+id/EnterCaloriesText"
-            android:layout_width="374dp"
-            android:layout_height="wrap_content"
-            android:text="@string/EnterCaloriesText"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:translationY="150dp" />
+public class TrackWaterCalActivity extends AppCompatActivity{
 
-        <EditText
-            android:id="@+id/CaloriesEditText"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:inputType="number"
-            android:text="@string/EditCaloriesText"
-            android:textColor="#FFFFFF"
-            android:translationY="150dp"
-            android:importantForAutofill="no"
-            android:labelFor="@id/CaloriesEditText"
-            />
+    @Override
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.ft_trackwatercal);
 
-        <TextView
-            android:id="@+id/EnterWaterOzText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/EnterWaterText"
-            android:textColor="#FFFFFF"
-            android:textSize="28sp"
-            android:translationY="200dp" />
+        Intent mainintent = getIntent();
 
-        <EditText
-            android:id="@+id/WaterOzEditText"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:inputType="number"
-            android:text="@string/EditWaterText"
-            android:textColor="#FFFFFF"
-            android:translationY="200dp"
-            android:importantForAutofill="no"
-            />
+        TextView waterCalTitleText = findViewById(R.id.WaterCalTitleText);
+        TextView EnterCaloriesText = findViewById(R.id.EnterCaloriesText);
+        EditText EditCaloriesText = findViewById(R.id.CaloriesEditText);
+        TextView EnterWaterText = findViewById(R.id.EnterWaterOzText);
+        EditText EditWaterText = findViewById(R.id.WaterOzEditText);
 
-        <Button
-            android:id="@+id/WaterCalSubmitButton"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/SubmitButtonText"
-            android:textColor="@color/white"
-            android:textSize="26sp"
-            android:translationX="25dp"
-            android:translationY="300dp" />
-
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    }
+}
