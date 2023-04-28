@@ -1,11 +1,29 @@
 <resources>
+    // Strings Used in Menu
     <string name="app_name">Fittness Tracker</string>
     <string name="MenuWorkoutButtonText">Track Workout</string>
     <string name="MenuWaterCalButtonText">Track Water/Calories</string>
     <string name="MenuProgressButtonText">My Progress</string>
     <string name="MenuTitleText">My Fitness Tracker</string>
 
-    <string name="WorkoutTitleText">Track Workout</string>
+    // Strings Used in Water and Calories Screen
     <string name="WaterCalTitleText">Track Water and Calories</string>
+    <string name="EnterCaloriesText">Enter Calories:</string>
+    <string name="EditCaloriesText"></string>                       // This text is left blank so that no text is already in the user input.
+    <string name="EnterWaterText">Enter Water Oz:</string>
+    <string name="EditWaterText"></string>                          // same with this one.
+
+    // String Used in Workout Screen
+    <string name="WorkoutTitleText">Track Workout</string>
+    <string name="EnterWorkoutText">Select Workout:</string>
+    <string name="EnterRepsText">Enter Reps:</string>
+    <string name="EnterSetsText">Enter Sets:</string>
+    <string name="EditWorkoutSelect"></string>
+    <string name="EditRepsText"></string>
+    <string name="EditSetsText"></string>
+
+
     <string name="ProgressTitleText">My Progress</string>
+    <string name="SubmitButtonText">Submit</string>
+
 </resources>
