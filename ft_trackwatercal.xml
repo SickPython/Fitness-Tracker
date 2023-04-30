@@ -21,36 +21,40 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="34dp"
             android:textStyle="bold"
             android:translationY="50dp" />
 
         <TextView
             android:id="@+id/EnterCaloriesText"
-            android:layout_width="374dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/EnterCaloriesText"
             android:textColor="@color/white"
             android:textSize="28sp"
+            android:textStyle="bold"
             android:translationY="150dp" />
 
         <EditText
             android:id="@+id/CaloriesEditText"
-            android:layout_width="350dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
+            android:importantForAutofill="no"
             android:inputType="number"
+            android:labelFor="@id/CaloriesEditText"
             android:text="@string/EditCaloriesText"
             android:textColor="#FFFFFF"
-            android:translationY="150dp"
-            android:importantForAutofill="no"
-            android:labelFor="@id/CaloriesEditText"
-            />
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:translationX="210dp"
+            android:translationY="105dp" />
 
         <TextView
             android:id="@+id/EnterWaterOzText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:textStyle="bold"
             android:text="@string/EnterWaterText"
             android:textColor="#FFFFFF"
             android:textSize="28sp"
@@ -58,25 +62,26 @@
 
         <EditText
             android:id="@+id/WaterOzEditText"
-            android:layout_width="350dp"
+            android:layout_width="150dp"
             android:layout_height="50dp"
+            android:importantForAutofill="no"
             android:inputType="number"
             android:text="@string/EditWaterText"
             android:textColor="#FFFFFF"
-            android:translationY="200dp"
-            android:importantForAutofill="no"
-            />
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:translationX="210dp"
+            android:translationY="155dp" />
 
         <Button
             android:id="@+id/WaterCalSubmitButton"
             android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_height="80dp"
             android:text="@string/SubmitButtonText"
             android:textColor="@color/white"
             android:textSize="26sp"
+            android:textStyle="bold"
             android:translationX="25dp"
             android:translationY="300dp" />
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
