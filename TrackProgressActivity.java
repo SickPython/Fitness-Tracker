@@ -1,54 +1,141 @@
 package com.example.fitnesstracker;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
-public class TrackProgressActivity extends AppCompatActivity{
 
-    private LineGraphSeries<DataPoint> waterIntake, calorieIntake;
-    
+public class TrackProgressActivity extends AppCompatActivity {
+
+    private TableLayout workoutDataTable;
+    private TableLayout waterCalDataTable;
+    private Button deleteWorkoutDataButton;
+    private Button deleteWaterCalDataButton;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ft_myprogress);
 
-        Intent mainintent = getIntent();
+        workoutDataTable = findViewById(R.id.workoutDataTable);
+        waterCalDataTable = findViewById(R.id.waterCalDataTable);
 
+        deleteWorkoutDataButton = findViewById(R.id.deleteWorkoutDataButton);
+        deleteWaterCalDataButton = findViewById(R.id.deleteWaterCalDataButton);
 
-        TextView ProgressTitleText = findViewById(R.id.MyProgressTitleText);
-        
-        double x,y,x2,y2;
-        x = 0;
-        x2 = 0;
+        SharedPreferences sharedPref = getSharedPreferences("fitnessData", MODE_PRIVATE);
 
-        GraphView graph1 = (GraphView) findViewById(R.id.graph1);
-        GraphView graph2 = (GraphView) findViewById(R.id.graph2);
-        waterIntake = new LineGraphSeries<>();
-        calorieIntake = new LineGraphSeries<>();
+        String workoutData = sharedPref.getString("workoutData", "");
+        String waterCalData = sharedPref.getString("waterCalData", "");
 
-        int numDataPoints = 200;
-        for (int i = 0; i < numDataPoints; i++){
-            x = x + 0.1;
-            y = Math.cos(x); //<-- example, it should be the number that is entered by user for water intake
+        populateWorkoutTable(workoutData);
+        populateWaterCalTable(waterCalData);
 
+        deleteWorkoutDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteLastWorkoutEntry();
+            }
+        });
 
-            waterIntake.appendData(new DataPoint(x,y), true, 100);
+        deleteWaterCalDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteLastWaterCalEntry();
+            }
+        });
+    }
 
+    // The rest of the existing methods
+
+    private void populateWorkoutTable(String workoutData) {
+        if (!workoutData.isEmpty()) {
+            String[] workoutEntries = workoutData.split("\n\n");
+
+            for (String entry : workoutEntries) {
+                String[] entryValues = entry.split("\n");
+
+                TableRow newRow = new TableRow(this);
+                for (String value : entryValues) {
+                    if (value.split(": ").length > 1) {
+                        TextView cell = new TextView(this);
+                        cell.setText(value.split(": ")[1]);
+                        cell.setTextColor(Color.WHITE);
+                        cell.setPadding(8, 8, 8, 8);
+                        newRow.addView(cell);
+                    }
+                }
+                workoutDataTable.addView(newRow);
+            }
         }
-        waterIntake.setColor(Color.BLUE);
-        graph1.addSeries(waterIntake);
+    }
 
+    private void populateWaterCalTable(String waterCalData) {
+        if (!waterCalData.isEmpty()) {
+            String[] waterCalEntries = waterCalData.split("\n\n");
 
-        int numDataPoints2 = 200;
-        for(int j = 0; j < numDataPoints2; j++){
-            x2 = x2 + 0.1;
-            y2 = Math.sin(x2);  // <-- example, it should be the amount of calories input by user
+            for (String entry : waterCalEntries) {
+                String[] entryValues = entry.split("\n");
 
-            calorieIntake.appendData(new DataPoint(x2,y2), true, 100);
+                TableRow newRow = new TableRow(this);
+                for (String value : entryValues) {
+                    if (value.split(": ").length > 1) {
+                        TextView cell = new TextView(this);
+                        cell.setText(value.split(": ")[1]);
+                        cell.setTextColor(Color.WHITE);
+                        cell.setPadding(8, 8, 8, 8);
+                        newRow.addView(cell);
+                    }
+                }
+                waterCalDataTable.addView(newRow);
+            }
         }
-        calorieIntake.setColor(Color.RED);
-        graph2.addSeries(calorieIntake);
-    
+    }
+
+    private void deleteLastWorkoutEntry() {
+        SharedPreferences sharedPref = getSharedPreferences("fitnessData", MODE_PRIVATE);
+        String workoutData = sharedPref.getString("workoutData", "");
+
+        if (!workoutData.isEmpty()) {
+            String[] workoutEntries = workoutData.split("\n\n");
+            StringBuilder newWorkoutData = new StringBuilder();
+
+            for (int i = 0; i < workoutEntries.length - 1; i++) {
+                newWorkoutData.append(workoutEntries[i]).append("\n\n");
+            }
+
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("workoutData", newWorkoutData.toString().trim());
+            editor.apply();
+
+            workoutDataTable.removeAllViews();
+            populateWorkoutTable(newWorkoutData.toString().trim());
+        }
+    }
+
+    private void deleteLastWaterCalEntry() {
+        SharedPreferences sharedPref = getSharedPreferences("fitnessData", MODE_PRIVATE);
+        String waterCalData = sharedPref.getString("waterCalData", "");
+
+        if (!waterCalData.isEmpty()) {
+            String[] waterCalEntries = waterCalData.split("\n\n");
+            StringBuilder newWaterCalData = new StringBuilder();
+
+            for (int i = 0; i < waterCalEntries.length - 1; i++) {
+                newWaterCalData.append(waterCalEntries[i]).append("\n\n");
+            }
+
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("waterCalData", newWaterCalData.toString().trim());
+            editor.apply();
+
+            waterCalDataTable.removeAllViews();
+            populateWaterCalTable(newWaterCalData.toString().trim());
+        }
     }
 }
