@@ -76,7 +76,7 @@
             android:textSize="28sp"
             android:textStyle="bold"
             android:translationX="175dp"
-            android:translationY="81dp" />
+            android:translationY="86dp" />
 
         <TextView
             android:id="@+id/EnterSetsText"
@@ -100,7 +100,7 @@
             android:textSize="28sp"
             android:textStyle="bold"
             android:translationX="175dp"
-            android:translationY="131dp" />
+            android:translationY="136dp" />
 
         <Button
             android:id="@+id/WorkoutSubmitButton"
